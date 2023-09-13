@@ -11,12 +11,16 @@ public class EmpresaContratante extends Empresa {
     public void escolherPlano(Plano plano) {
         Plano planoComDesconto = new Plano(plano.getId(), plano.getTipo(), plano.getValorMensalidade(), plano.getQtdMeses());
         Double desconto = 0.0;
-        if (plano.getTipo().equals("plus")){
+        if (plano.getTipo().equals("Plus")){
             desconto = 15.0;
-        } else if (plano.getTipo().equals("pro")){
+        } else if (plano.getTipo().equals("Pro")){
             desconto = 10.0;
         }
-        setPlano(plano);
+        Double valorMensalidade = planoComDesconto.getValorMensalidade();
+        Double valorMensalidadeComDesconto = valorMensalidade - (valorMensalidade * (desconto / 100));
+        planoComDesconto.setValorMensalidade(valorMensalidadeComDesconto);
+
+        setPlano(planoComDesconto);
     }
 
     public void contratarServico(){
