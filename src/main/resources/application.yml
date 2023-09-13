@@ -1,0 +1,8 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: empresa-backend
+
+url:
+  viacep.host: https://empresa-api-1693494375889.azurewebsites.net/v1.0/empresas

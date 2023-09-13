@@ -1,23 +1,26 @@
+package com.ethos.empresabackend.entity;
+
+import java.util.UUID;
+
 public abstract class Empresa {
+    private UUID id;
     private String razaoSocial;
     private String cnpj;
     private String telefone;
     private String setor;
     private Integer qtdFuncionarios;
-    private Endereco endereco;
     private Plano plano;
-    public Empresa(String razaoSocial, String cnpj, String telefone, String setor, Integer qtdFuncionarios, Endereco endereco) {
+    public Empresa(String razaoSocial, String cnpj, String telefone, String setor, Integer qtdFuncionarios) {
+        this.id = UUID.randomUUID();
         this.razaoSocial = razaoSocial;
         this.cnpj = cnpj;
         this.telefone = telefone;
         this.setor = setor;
         this.qtdFuncionarios = qtdFuncionarios;
-        this.endereco = endereco;
+        this.plano = new Plano(1, "gratuito", 0.0, 0);
     }
 
-    public void escolherPlano(Plano plano){
-        this.plano = plano;
-    }
+    public abstract void escolherPlano(Plano plano);
 
 
     public void setRazaoSocial(String razaoSocial) {
@@ -40,20 +43,20 @@ public abstract class Empresa {
         this.qtdFuncionarios = qtdFuncionarios;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
-
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
     public String getRazaoSocial() {
         return razaoSocial;
     }
 
     public String getCnpj() {
         return cnpj;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     public String getTelefone() {
@@ -68,15 +71,24 @@ public abstract class Empresa {
         return qtdFuncionarios;
     }
 
+    public Plano getPlano() {
+        return plano;
+    }
+
+    public void setPlano(Plano plano) {
+        this.plano = plano;
+    }
+
     @Override
     public String toString() {
         return "Empresa{" +
-                "razaoSocial='" + razaoSocial + '\'' +
+                "id=" + id +
+                ", razaoSocial='" + razaoSocial + '\'' +
                 ", cnpj='" + cnpj + '\'' +
                 ", telefone='" + telefone + '\'' +
                 ", setor='" + setor + '\'' +
                 ", qtdFuncionarios=" + qtdFuncionarios +
-                ", endereco=" + endereco +
+                ", plano=" + plano +
                 '}';
     }
 }

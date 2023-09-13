@@ -1,14 +1,16 @@
+package com.ethos.empresabackend.entity;
+
 import java.time.LocalDate;
 import java.util.UUID;
 
 public class Plano {
-    private UUID id;
+    private int id;
     private String tipo;
     private Double valorMensalidade;
     private Integer qtdMeses;
     private LocalDate prazoExpiracao;
-    public Plano(String tipo, Double valorMensalidade, Integer qtdMeses) {
-        this.id = UUID.randomUUID();
+    public Plano(int id, String tipo, Double valorMensalidade, Integer qtdMeses) {
+        this.id = id;
         this.tipo = tipo;
         this.valorMensalidade = valorMensalidade;
         this.qtdMeses = qtdMeses;
@@ -39,7 +41,7 @@ public class Plano {
         this.qtdMeses = qtdMeses;
     }
 
-    public UUID getId() {
+    public int getId() {
         return id;
     }
 
